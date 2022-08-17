@@ -12,6 +12,9 @@ const PORT = process.env.PORT || 8080
 
 app.get('/',(req,res)=>res.send(`Server is running on port ${PORT}Auth page (CI/CD)`))
 
+app.get('/login',(req,res)=>res.send('this si login page'))
+
+
 app.get('/auth',(req,res)=>res.sendFile(__dirname+'/public/auth.html'))
 
 
