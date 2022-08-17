@@ -1,0 +1,28 @@
+name: Deploy code to Heroku
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "src/*"
+      - ".github/workflows/Deploy.yml"
+
+jobs:
+  play:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use node
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install
+      - run: npm run build
+      - name : Deploy to heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: '9ed08459-083c-4083-b615-b76966772648'
+          heroku_app_name: 'devtown-tshirt-backend'
+          heroku_email: 'kartikdps.kg@gmail.com'
+      
