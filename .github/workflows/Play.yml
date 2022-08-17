@@ -16,3 +16,5 @@ jobs:
         run: echo "hi from github workflow"
       - name: log the path
         run: pwd
+      - name: display the files
+        run: ls
