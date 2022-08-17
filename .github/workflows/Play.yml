@@ -12,6 +12,7 @@ jobs:
   play:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: install deps
         run: npm install
       - name: build the code
