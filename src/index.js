@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 8080
 
 app.get('/',(req,res)=>res.send(`Server is running on port ${PORT} Version 1.1.0`))
 
-app.listen(PORT,()=>
+app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT} `)
 })
 
