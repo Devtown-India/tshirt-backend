@@ -14,3 +14,5 @@ jobs:
     steps:
       - name: Playing with workflows
         run: echo "hi from github workflow"
+      - name: log the path
+        run: pwd
