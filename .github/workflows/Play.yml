@@ -12,9 +12,8 @@ jobs:
   play:
     runs-on: ubuntu-latest
     steps:
-      - name: Playing with workflows
-        run: echo "hi from github workflow"
-      - name: log the path
-        run: pwd
-      - name: display the files
-        run: ls
+      - name: install deps
+        run: npm install
+      - name: build the code
+        run: npm run build
+      
