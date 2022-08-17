@@ -10,7 +10,7 @@ app.use(express.json())
 const PORT = process.env.PORT || 8080
 
 
-app.get('/',(req,res)=>res.send(`Server is running on port ${PORT} Version 1.4.0 (CI/CD)`))
+app.get('/',(req,res)=>res.send(`Server is running on port ${PORT}Auth page (CI/CD)`))
 
 app.get('/auth',(req,res)=>res.sendFile(__dirname+'/public/auth.html'))
 
