@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const connectDB = async () => {
-    const conectionString = process.env.DB_URL
+    const conectionString = "mongodb+srv://kartik:kartik@cluster0.wiobz.mongodb.net/fswd"
     try {
         await mongoose.connect(conectionString)
         console.log('Connected to the DB !!! ')
