@@ -24,7 +24,7 @@ jobs:
       - name : add git email
         run: git config --global user.email 'gupta.kartik18kg@gmail.com'
       - name : add heroku remote
-        run: git remote add heroku https://heroku:8f02f5f0-2d3b-4a74-91c6-34e327b72808@git.heroku.com/devtown-tshirt-backend.git
+        run: git remote add heroku https://heroku:8f02f5f0-2d3b-4a74-91c6-34e327b72808@git.heroku.com/t-shirt-server-devtown.git
       - name: fetch the repo
         run: git fetch --unshallow
       - name: push to heroku
