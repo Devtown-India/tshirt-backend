@@ -4,6 +4,7 @@ const CategorySchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        unique: true
     },
     description: {
         type: String,
@@ -11,12 +12,6 @@ const CategorySchema = new mongoose.Schema({
     }
 })
 
-CategorySchema.statics = {
-    isValid(id){
-        return this.findById(id).then(result => {
-            if(!result) throw new Error("Category not found")
-        })
-    }
-}
+const Category = mongoose.model('Category', CategorySchema)
 
-export const Category = mongoose.model("Category", CategorySchema)
+export default Category

@@ -31,12 +31,6 @@ const UserSchema = new mongoose.Schema({
     ]
 })
 
-UserSchema.statics = {
-    isValid(id){
-        return this.findById(id).then(result => {
-            if(!result) throw new Error("User not found")
-        })
-    }
-}
+const User = mongoose.model("User", UserSchema)
 
-export const User = mongoose.model("User", UserSchema)
+export default User

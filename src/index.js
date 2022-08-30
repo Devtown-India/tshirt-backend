@@ -1,24 +1,32 @@
-import dotenv from 'dotenv'
 import express from 'express'
+import dotenv from 'dotenv'
+import connectDB from './services/mongodb/connectDB'
+dotenv.config()
 import cors from 'cors'
-dotenv.config('../.env')
+import authRoutes from './routes/authRoutes'
+import categoryRoutes from './routes/categoryRoutes'
+import productRoutes from './routes/productRoutes'
+import orderRoutes from './routes/orderRoutes'
+
 
 const app = express()
-app.use(express.static('public'))
+const port = process.env.PORT || 3003
+
+connectDB()
+
 app.use(cors())
 app.use(express.json())
-const PORT = process.env.PORT || 8080
 
+//route to handle auth requests
+app.use("/api/v1/auth", authRoutes)
+app.use("/api/v1/category", categoryRoutes)
+app.use("/api/v1/product", productRoutes)
+app.use("/api/v1/order", orderRoutes)
 
-app.get('/',(req,res)=>res.send(`Server is running on port ${PORT}Auth page (CI/CD)`))
-
-app.get('/login',(req,res)=>res.send('this si login page'))
-
-
-app.get('/auth',(req,res)=>res.sendFile(__dirname+'/public/auth.html'))
-
-
-app.listen(PORT,()=>{
-    console.log(`Server is running on port ${PORT} `)
+app.get('/', (req, res) => {
+    res.send(`Server running at ${port}  `)
 })
 
+app.listen(port, (req, res) => {
+    console.log(`Server listening at PORT ${port}`)
+})

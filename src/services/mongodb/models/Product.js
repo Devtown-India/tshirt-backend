@@ -1,51 +1,53 @@
 import mongoose from 'mongoose'
 
+
 const ProductSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    listPrice: {
+        type: Number,
+        required: true
     },
     description: {
         type: String,
         required: true
     },
+    color: {
+        type: String,
+        required: true
+    },
+    compatibleWith: [
+        {
+            type: String,
+        }
+    ],
     category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category'
+        type: mongoose.Types.ObjectId,
+        ref: "Category"
     },
-    stock:{
+    imageUrl: {
+        type: String,
+    },
+    stock: {
         type: Number,
         required: true
     },
-    color:{
-        type: String,
-        required: true,
-    },
-    size:{
-        type: String,
-        required: true,
-        enum: ['S', 'M', 'L', 'XL', 'XXL','Freesize']
-    },
-    image:{
-        type: String,
-        required: true,
-    },
-    stickerPrice:{
-        type: Number,
-        required: true
-    },
-    price:{
-        type: Number,
-        required: true
-    }
+    // reviews: [
+    //     {
+    //         type: mongoose.Types.ObjectId,
+    //         ref: "reviews"
+    //     }
+    // ]
+
 })
 
-ProductSchema.statics = {
-    isValid(id){
-        return this.findById(id).then(result => {
-            if(!result) throw new Error("Product not found")
-        })
-    }
-}
 
-export const Product = mongoose.model("Product", ProductSchema)
+const Product = mongoose.model("Product", ProductSchema)
+
+export default Product
