@@ -1,7 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './services/mongodb/connectDB'
-dotenv.config()
+dotenv.config('../.env')
 import cors from 'cors'
 import authRoutes from './routes/authRoutes'
 import categoryRoutes from './routes/categoryRoutes'
