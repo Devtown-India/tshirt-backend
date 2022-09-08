@@ -67,7 +67,6 @@ router.post(
   body("description").isLength({ min: 10 }),
   body("color").isLength({ min: 1 }),
   body("category").isLength({ min: 5 }),
-  body("imageUrl").isURL(),
   async (req, res) => {
     const { errors } = validationResult(req);
     if (errors.length > 0)

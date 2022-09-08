@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use node
+      - name: Use nodejs
         uses: actions/setup-node@v3
         with:
           node-version: 16

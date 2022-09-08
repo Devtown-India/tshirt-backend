@@ -22,17 +22,13 @@ const ProductSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    compatibleWith: [
-        {
-            type: String,
-        }
-    ],
     category: {
         type: mongoose.Types.ObjectId,
         ref: "Category"
     },
     imageUrl: {
-        type: String,
+        link:String,
+        deletehash:String,
     },
     stock: {
         type: Number,
