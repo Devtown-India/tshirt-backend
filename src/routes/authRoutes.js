@@ -124,5 +124,30 @@ router.post('/login', async (req, res) => {
     }
 })
 
+/*
+type : POST
+path : /api/v1/auth/verify/:token
+params : none
+isProtected: false 
+*/
+
+router.post('/verify/:token', async (req, res) => {
+
+    try {
+        const { token } = req.params
+        const {_id,role} = await jwt.verify(token, process.env.JWT_SECRET);
+        //find the user
+        const user = await User.findOne({ _id })
+        return res.json({ success:false,data:{
+            user:{email:user.email,role}
+        }, message: "user doesn't exist" })
+
+    } catch (error) {
+        console.log(error.message)
+        return res.json({ success:false,data:{}, message: "server error" })
+
+    }
+})
+
 
 export default router
